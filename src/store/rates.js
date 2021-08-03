@@ -1,5 +1,4 @@
 import { getExchangeRates } from "../api"
-import { supportedCurrencies } from './rates';
 
 const initialState = {
     currencyCode:"USD",

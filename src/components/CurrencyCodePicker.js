@@ -1,5 +1,5 @@
 import { useDispatch,useSelector } from "react-redux";
-import { changeCurrency,changeCurrencyCode,getCurrency,getSupportedSymbols } from "../store/rates";
+import {changeCurrencyCode,getCurrency,getSupportedSymbols } from "../store/rates";
 export function CurrencyCodePicker() {
   const dispatch = useDispatch();
   const currencyCode = useSelector(getCurrency);

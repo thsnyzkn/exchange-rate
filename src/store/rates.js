@@ -17,7 +17,9 @@ export const ratesReducer = (state=initialState,action)=> {
             return {...state,currencyCode:action.payload}
         }
         case "rates/ratesReceived":{
-            return {...state,rates:action.payload}
+            const codes = Object.keys(action.payload);
+            const rates = Object.fromEntries(Object.entries(action.payload).filter(([code,]) => code !==state.currencyCode))
+            return {...state,rates,supportedSymbols:codes}
         }
         default:
             return state;
@@ -61,4 +63,10 @@ export function changeCurrencyCode (currencyCode) {
         })
     }
    
+}
+
+export function getInitialRates(dispatch,getState){
+    const state = getState();
+    const currencyCode = getCurrency(state);
+    dispatch(changeCurrencyCode(currencyCode));
 }
